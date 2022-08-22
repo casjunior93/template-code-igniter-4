@@ -52,7 +52,7 @@ class Auth extends BaseController
   {
     //validando campos do formulario
     $validation = $this->validate([
-      'nome' => [
+      'name' => [
         'rules' => 'required',
         'errors' => [
           'required' => 'Campo nome não pode ficar vazio'
@@ -66,7 +66,7 @@ class Auth extends BaseController
           'is_unique' => 'Email já cadastrado'
         ]
       ],
-      'senha' => [
+      'password' => [
         'rules' => 'required|min_length[5]|max_length[12]',
         'errors' => [
           'required' => 'Campo senha não pode ficar vazio',
@@ -74,7 +74,7 @@ class Auth extends BaseController
           'max_length' => 'Senha deve ter menos de 12 caracteres'
         ]
       ],
-      'senha2' => [
+      'password2' => [
         'rules' => 'required|min_length[5]|max_length[12]|matches[senha]',
         'errors' => [
           'required' => 'Campo senha não pode ficar vazio',
@@ -83,79 +83,27 @@ class Auth extends BaseController
           'matches' => 'As senhas não correspondem',
         ]
       ],
-      'cep' => [
-        'rules' => 'required',
-        'errors' => [
-          'required' => 'Campo cep não pode ficar vazio'
-        ]
-      ],
-      'rua' => [
-        'rules' => 'required',
-        'errors' => [
-          'required' => 'Campo rua não pode ficar vazio'
-        ]
-      ],
-      'cidade' => [
-        'rules' => 'required',
-        'errors' => [
-          'required' => 'Campo cidade não pode ficar vazio'
-        ]
-      ],
-      'estado' => [
-        'rules' => 'required',
-        'errors' => [
-          'required' => 'Campo estado não pode ficar vazio'
-        ]
-      ],
-      'responsavel' => [
-        'rules' => 'required',
-        'errors' => [
-          'required' => 'Campo responsavel não pode ficar vazio'
-        ]
-      ],
-      'telefone' => [
+      'phone' => [
         'rules' => 'required',
         'errors' => [
           'required' => 'Campo telefone não pode ficar vazio'
-        ]
-      ],
-      'sobre-clinica' => [
-        'rules' => 'required',
-        'errors' => [
-          'required' => 'Campo sobre não pode ficar vazio'
         ]
       ]
     ]);
 
     if (!$validation) {
-      return view('auth/cadastre-se', ['validation' => $this->validator]);
+      return view('auth/registration', ['validation' => $this->validator]);
     } else {
-      #echo 'Form validado com sucesso';
-      //registrando no banco de dados
-      $nome = $this->request->getPost('nome');
+      $name = $this->request->getPost('name');
       $email = $this->request->getPost('email');
-      $senha = $this->request->getPost('senha');
-      $cep = $this->request->getPost('cep');
-      $rua = $this->request->getPost('rua');
-      $cidade = $this->request->getPost('cidade');
-      $estado = $this->request->getPost('estado');
-      $complemento = $this->request->getPost('complemento');
-      $responsavel = $this->request->getPost('responsavel');
-      $telefone = $this->request->getPost('telefone');
-      $descricao = $this->request->getPost('sobre-clinica');
+      $password = $this->request->getPost('password');
+      $phone = $this->request->getPost('phone');
 
       $values = [
-        'nome' => $nome,
+        'name' => $name,
         'email' => $email,
-        'senha' => Hash::make($senha),
-        'cep' => $cep,
-        'rua' => $rua,
-        'cidade' => $cidade,
-        'estado' => $estado,
-        'complemento' => $complemento,
-        'responsavel' => $responsavel,
-        'telefone' => $telefone,
-        'descricao' => $descricao
+        'password' => Hash::make($password),
+        'phone_number' => $phone
       ];
 
       $userModel = new \App\Models\UserModel();
@@ -163,7 +111,6 @@ class Auth extends BaseController
       if (!$query) {
         return redirect()->back()->with('fail', 'Erro ao salvar no banco de dados');
       } else {
-        //return redirect()->to('entre-cadastre-se')->with('success', 'Registrado com sucesso! Faça login com suas credenciais.');
         $id_usuario = $userModel->insertID();
         session()->set('loggedUser', $id_usuario);
         return redirect()->to('/dashboard');
@@ -173,8 +120,6 @@ class Auth extends BaseController
 
   function login()
   {
-    //validando campos do formulario
-
     $validation = $this->validate([
       'email' => [
         'rules' => 'required|valid_email|is_not_unique[usuarios.email]',
@@ -184,7 +129,7 @@ class Auth extends BaseController
           'is_not_unique' => 'Email não cadastrado'
         ]
       ],
-      'senha' => [
+      'password' => [
         'rules' => 'required|min_length[5]|max_length[12]',
         'errors' => [
           'required' => 'Campo senha não pode ficar vazio',
@@ -195,19 +140,18 @@ class Auth extends BaseController
     ]);
 
     if (!$validation) {
-      return view('auth/entre-cadastre-se', ['validation' => $this->validator]);
+      return view('auth/sigin', ['validation' => $this->validator]);
     } else {
-      //Buscando o usuário
-
       $email = $this->request->getPost('email');
-      $senha = $this->request->getPost('senha');
+      $senha = $this->request->getPost('password');
       $userModel = new \App\Models\UserModel();
+
       $usuario_info = $userModel->where('email', $email)->first();
-      $check_senha = Hash::check($senha, $usuario_info['senha']);
+      $check_senha = Hash::check($senha, $usuario_info['password']);
 
       if (!$check_senha) {
         session()->setFlashdata('fail', 'Senha incorreta');
-        return redirect()->to('entre-cadastre-se')->withInput();
+        return redirect()->to('auth/sigin')->withInput();
       } else {
         $user_id = $usuario_info['id'];
         session()->set('loggedUser', $user_id);
@@ -220,7 +164,7 @@ class Auth extends BaseController
   {
     if (session()->has('loggedUser')) {
       session()->remove('loggedUser');
-      return redirect()->to('entre-cadastre-se/?access=out')->with('fail', 'Você saiu!');
+      return redirect()->to('auth/sigin/?access=out')->with('fail', 'Você saiu!');
     }
   }
 }
