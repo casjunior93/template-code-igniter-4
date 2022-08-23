@@ -217,9 +217,6 @@ class Auth extends BaseController
 
       $query = $userModel->resetPassword($userData->getResult()[0]->id_user, Hash::make($new_password));
 
-      echo $new_password;
-      exit();
-
       if (!$query) {
         return redirect()->back()->with('fail', 'Erro ao gerar nova senha');
       } else {
