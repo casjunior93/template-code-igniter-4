@@ -1,10 +1,29 @@
+/* ---------- MENU ---------- 
+
+0. General styles
+0.1 Spacing boxes */
+
+
+/* ---------- 0. GENERAL STYLES ---------- */
+
 :root {
     --background-color: rgb(242, 245, 247);
+    --font-color-normal: #3c4858;
 }
 
 body {
     background-color: var(--background-color);
+    color: var(--font-color-normal);
+    font-family: 'Roboto', sans-serif;
 }
+
+a {
+    color: var(--font-color-normal);
+    font-weight: 600;
+}
+
+
+/* ---------- 0.1 SPACING BOXES ---------- */
 
 .spacing-30 {
     height: 30px;
