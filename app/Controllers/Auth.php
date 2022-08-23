@@ -50,7 +50,12 @@ class Auth extends BaseController
       throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
     }
 
-    return view('auth/recover-password');
+    $data = [
+      'title' => 'Recuperar senha'
+    ];
+
+    return view('templates/page/header', $data)
+      . view('auth/recover-password');
   }
 
   public function saveRegistration()
