@@ -1,0 +1,11 @@
+:root {
+    --background-color: rgb(242, 245, 247);
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+.spacing-30 {
+    height: 30px;
+}

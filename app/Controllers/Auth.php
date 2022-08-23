@@ -101,7 +101,13 @@ class Auth extends BaseController
     ]);
 
     if (!$validation) {
-      return view('auth/registration', ['validation' => $this->validator]);
+
+      $data = [
+        'title' => 'Registro'
+      ];
+
+      return view('templates/page/header', $data)
+        . view('auth/registration', ['validation' => $this->validator]);
     } else {
       $name = $this->request->getPost('name');
       $email = $this->request->getPost('email');
