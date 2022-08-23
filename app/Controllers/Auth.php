@@ -35,7 +35,12 @@ class Auth extends BaseController
       throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
     }
 
-    return view($page);
+    $data = [
+      'title' => 'Registro'
+    ];
+
+    return view('templates/page/header', $data)
+      . view($page);
   }
 
   public function recoverPassword($page = 'auth/recover-password')
@@ -59,7 +64,7 @@ class Auth extends BaseController
         ]
       ],
       'email' => [
-        'rules' => 'required|valid_email|is_unique[usuarios.email]',
+        'rules' => 'required|valid_email|is_unique[users.email]',
         'errors' => [
           'required' => 'Campo email não pode ficar vazio',
           'valid_email' => 'Email inválido',
@@ -75,7 +80,7 @@ class Auth extends BaseController
         ]
       ],
       'password2' => [
-        'rules' => 'required|min_length[5]|max_length[12]|matches[senha]',
+        'rules' => 'required|min_length[5]|max_length[12]|matches[password]',
         'errors' => [
           'required' => 'Campo senha não pode ficar vazio',
           'min_length' => 'Senha deve ter mais de 5 caracteres',
@@ -122,7 +127,7 @@ class Auth extends BaseController
   {
     $validation = $this->validate([
       'email' => [
-        'rules' => 'required|valid_email|is_not_unique[usuarios.email]',
+        'rules' => 'required|valid_email|is_not_unique[users.email]',
         'errors' => [
           'required' => 'Campo email não pode ficar vazio',
           'valid_email' => 'Email inválido',
