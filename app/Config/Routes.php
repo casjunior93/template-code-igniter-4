@@ -47,6 +47,9 @@ $routes->post('auth/save-registration', 'Auth::saveRegistration');
 $routes->post('auth/login', 'Auth::login');
 $routes->get('auth/logout', 'Auth::logout');
 
+//Email
+$routes->get("send-mail", "Email::sendMail");
+
 //Logged in area
 
 $routes->group('', ['filter' => 'AuthCheck'], function ($routes) {
