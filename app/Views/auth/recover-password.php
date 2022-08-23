@@ -1,6 +1,7 @@
 <section class="content-section-login col-12 vh-100 d-flex aligns-items-center justify-content-center">
-  <div class="content-form-login col-md-5 p-3 border rounded-3 align-self-center">
-    <h1>Recuperação de senha</h1>
+  <div class="content-form-login col-md-5 p-3 border rounded-3 align-self-center bg-white">
+    <h1 class="text-center">Recuperação de senha</h1>
+    <div class="spacing-30"></div>
     <form action="<?= base_url('auth/reset-password'); ?>" method="POST">
       <?= csrf_field(); ?>
       <?php if (!empty(session()->getFlashdata('fail'))) : ?>
@@ -27,11 +28,14 @@
           <input type="submit" class="btn btn-primary" value="Recuperar senha" />
         </div>
       </div>
-      <div class="row mb-3">
-        <a href="<?= base_url('auth/registration'); ?>" class="d-block text-center">Criar uma conta</a>
-      </div>
-      <div class="row mb-3">
-        <a href="<?= base_url('auth/sigin'); ?>" class="d-block text-center">Entrar</a>
+      <div class="spacing-30"></div>
+      <div class="row col-12 d-flex">
+        <div class="col-6 mb-3">
+          <a href="<?= base_url('auth/sigin'); ?>" class="d-block text-center">Entrar</a>
+        </div>
+        <div class="col-6 mb-3">
+          <a href="<?= base_url('auth/registration'); ?>" class="d-block text-center">Criar uma conta</a>
+        </div>
       </div>
   </div>
   </form>
