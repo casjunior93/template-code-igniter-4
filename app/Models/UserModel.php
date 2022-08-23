@@ -18,4 +18,12 @@ class UserModel extends Model
     $resultado = $db->query($sql);
     return $resultado->getResultArray();
   }
+
+  public function resetPassword($id, $hash)
+  {
+    $db = db_connect();
+    $sql = "UPDATE users SET password = '$hash' WHERE id_user = $id";
+    $resultado = $db->query($sql);
+    return $resultado;
+  }
 }

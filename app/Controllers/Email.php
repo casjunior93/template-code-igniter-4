@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 class Email extends BaseController
 {
-  public function sendMail()
+  public function sendMail($template = "templates/email/email-template", $data = [])
   {
     $email = \Config\Services::email();
 
@@ -13,7 +13,7 @@ class Email extends BaseController
     $email->setSubject("Test Mail with Template");
 
     // Using a custom template
-    $template = view("templates/email/email-template", []);
+    $template = view($template, []);
 
     $email->setMessage($template);
 

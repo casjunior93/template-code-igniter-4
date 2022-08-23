@@ -1,7 +1,7 @@
 <section class="content-section-login col-12 vh-100 d-flex aligns-items-center justify-content-center">
   <div class="content-form-login col-md-5 p-3 border rounded-3 align-self-center">
     <h1>Recuperação de senha</h1>
-    <form action="<?= base_url('auth/login'); ?>" method="POST">
+    <form action="<?= base_url('auth/reset-password'); ?>" method="POST">
       <?= csrf_field(); ?>
       <?php if (!empty(session()->getFlashdata('fail'))) : ?>
         <div class='alert alert-danger'><?= session()->getFlashdata('fail'); ?></div>
@@ -20,6 +20,11 @@
             echo '</div>';
           }
           ?>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-12 d-flex justify-content-center">
+          <input type="submit" class="btn btn-primary" value="Recuperar senha" />
         </div>
       </div>
       <div class="row mb-3">

@@ -60,7 +60,6 @@ class Auth extends BaseController
 
   public function saveRegistration()
   {
-    //validando campos do formulario
     $validation = $this->validate([
       'name' => [
         'rules' => 'required',
@@ -150,7 +149,11 @@ class Auth extends BaseController
     ]);
 
     if (!$validation) {
-      return view('auth/sigin', ['validation' => $this->validator]);
+      $data = [
+        'title' => 'Entrar'
+      ];
+      return view('templates/page/header', $data)
+        . view('auth/sigin', ['validation' => $this->validator]);
     } else {
       $email = $this->request->getPost('email');
       $senha = $this->request->getPost('password');
@@ -163,7 +166,7 @@ class Auth extends BaseController
         session()->setFlashdata('fail', 'Senha incorreta');
         return redirect()->to('auth/sigin')->withInput();
       } else {
-        $user_id = $usuario_info['id'];
+        $user_id = $usuario_info['id_user'];
         session()->set('loggedUser', $user_id);
         return redirect()->to('/dashboard');
       }
@@ -175,6 +178,55 @@ class Auth extends BaseController
     if (session()->has('loggedUser')) {
       session()->remove('loggedUser');
       return redirect()->to('auth/sigin/?access=out')->with('fail', 'Você saiu!');
+    }
+  }
+
+  function resetPassword()
+  {
+    $validation = $this->validate([
+      'email' => [
+        'rules' => 'required|valid_email|is_not_unique[users.email]',
+        'errors' => [
+          'required' => 'Campo email não pode ficar vazio',
+          'valid_email' => 'Email inválido',
+          'is_not_unique' => 'Email não cadastrado'
+        ]
+      ]
+    ]);
+
+    if (!$validation) {
+      $data = [
+        'title' => 'Recuperar senha'
+      ];
+      return view('templates/page/header', $data)
+        . view('auth/recover-password', ['validation' => $this->validator]);
+    } else {
+      $email = $this->request->getPost('email');
+
+      $new_password = rand(1000000, 9999999);
+
+      $userModel = new \App\Models\UserModel();
+
+      $userData = $userModel->getWhere(['email' => $email], 1);
+
+      $query = $userModel->resetPassword($userData->getResult()[0]->id_user, Hash::make($new_password));
+
+      echo $new_password;
+      exit();
+
+      if (!$query) {
+        return redirect()->back()->with('fail', 'Erro ao gerar nova senha');
+      } else {
+
+        helper('sendMail');
+        $status_email = sendMail("templates/email/reset-password", ['new_password' => $new_password]);
+
+        if ($status_email) {
+          return redirect()->back()->with('success', 'Sua nova senha foi enviada ao seu email.');
+        } else {
+          return redirect()->back()->with('fail', 'Erro ao enviar email com nova senha');
+        }
+      }
     }
   }
 }

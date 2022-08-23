@@ -25,11 +25,11 @@
             <div class="row mb-3">
                 <label for="password" class="col-sm-3 col-form-label">Senha<span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                    <input id="password" value='' placeholder="Senha" type="password" class="form-control" name="senha" minlength="5" maxlength="12" required />
+                    <input id="password" value='' placeholder="Senha" type="password" class="form-control" name="password" minlength="5" maxlength="12" required />
                     <?php
-                    if (isset($validation) && display_errors_forms($validation, 'senha')) {
+                    if (isset($validation) && display_errors_forms($validation, 'password')) {
                         echo '<div class="alert alert-danger">';
-                        echo display_errors_forms($validation, 'senha');
+                        echo display_errors_forms($validation, 'password');
                         echo '</div>';
                     }
                     ?>

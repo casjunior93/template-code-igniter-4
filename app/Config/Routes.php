@@ -46,6 +46,7 @@ $routes->get('auth/recover-password', 'Auth::recoverPassword');
 $routes->post('auth/save-registration', 'Auth::saveRegistration');
 $routes->post('auth/login', 'Auth::login');
 $routes->get('auth/logout', 'Auth::logout');
+$routes->post('auth/reset-password', 'Auth::resetPassword');
 
 //Email
 $routes->get("send-mail", "Email::sendMail");
