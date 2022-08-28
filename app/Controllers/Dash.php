@@ -22,6 +22,9 @@ class Dash extends BaseController
       'title' => 'Dashboard',
     ];
 
-    return view($page, $data);
+    return view('templates/page/header', $data)
+      . view('templates/dash/header')
+      . view($page)
+      . view('templates/page/footer');
   }
 }
