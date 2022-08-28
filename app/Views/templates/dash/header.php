@@ -34,6 +34,7 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" href="#">Perfil</a></li>
             <li><a class="dropdown-item" href="#">Assinatura</a></li>
+            <li><a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Sair</a></li>
           </ul>
         </li>
       </ul>
