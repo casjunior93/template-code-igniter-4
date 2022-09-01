@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Dashboard</a>
+          <a class="nav-link" aria-current="page" href="<?= base_url('dashboard/profile'); ?>">Dashboard</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Recursos</a>
@@ -19,8 +19,8 @@
             Minha conta
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Perfil</a></li>
-            <li><a class="dropdown-item" href="#">Assinatura</a></li>
+            <li><a class="dropdown-item" href="<?= base_url('dashboard/profile'); ?>">Perfil</a></li>
+            <li><a class="dropdown-item" href="<?= base_url('dashboard/payment'); ?>">Assinatura</a></li>
           </ul>
         </li>
       </ul>
@@ -32,8 +32,8 @@
             Minha conta
           </a>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Perfil</a></li>
-            <li><a class="dropdown-item" href="#">Assinatura</a></li>
+            <li><a class="dropdown-item" href="<?= base_url('dashboard/profile'); ?>">Perfil</a></li>
+            <li><a class="dropdown-item" href="<?= base_url('dashboard/payment'); ?>">Assinatura</a></li>
             <li><a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Sair</a></li>
           </ul>
         </li>

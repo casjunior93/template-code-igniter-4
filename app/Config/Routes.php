@@ -56,6 +56,8 @@ $routes->get("send-mail", "Email::sendMail");
 $routes->group('', ['filter' => 'AuthCheck'], function ($routes) {
     //Dashboard
     $routes->get('dashboard', 'Dash::index');
+    $routes->get('dashboard/profile', 'Dash::profile');
+    $routes->get('dashboard/payment', 'Dash::payment');
 });
 /*
  * --------------------------------------------------------------------
