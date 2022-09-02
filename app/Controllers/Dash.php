@@ -40,7 +40,7 @@ class Dash extends BaseController
     ];
 
     return view('templates/page/header', $data)
-      . view('templates/dash/header')
+      . view('templates/dash/header', $data)
       . view($page)
       . view('templates/page/footer');
   }
@@ -57,7 +57,7 @@ class Dash extends BaseController
     ];
 
     return view('templates/page/header', $data)
-      . view('templates/dash/header')
+      . view('templates/dash/header', $data)
       . view($page)
       . view('templates/page/footer');
   }

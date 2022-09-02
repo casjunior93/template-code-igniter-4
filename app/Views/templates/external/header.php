@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white" aria-current="page" href="<?= base_url('dashboard'); ?>">Dashboard</a>
+          <a class="nav-link text-white" aria-current="page" href="<?= base_url('pricing'); ?>">Preços</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="#">Recursos</a>
@@ -25,8 +25,12 @@
         </li>
       </ul>
     </div>
-    <div class="nav-item">
-      <ul class="navbar-nav d-none d-sm-block">
+    <div class="nav-item d-flex">
+      <ul class="nav">
+        <li class="nav-item"><a href="<?= base_url('auth/sigin'); ?>" class="nav-link text-white px-2">Entrar</a></li>
+        <li class="nav-item"><a href="<?= base_url('auth/registration'); ?>" class="nav-link text-white px-2">Registrar</a></li>
+      </ul>
+      <ul class="navbar-nav d-none">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Minha conta
@@ -41,15 +45,3 @@
     </div>
   </div>
 </nav>
-<div class="py-3 mb-4 border-bottom">
-  <div class="container-fluid">
-    <div class="container d-flex flex-wrap justify-content-center">
-      <div class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-        <span class="fs-4"><?= $title; ?></span>
-      </div>
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0">
-        <input type="search" class="form-control" placeholder="Buscar" aria-label="Buscar">
-      </form>
-    </div>
-  </div>
-</div>

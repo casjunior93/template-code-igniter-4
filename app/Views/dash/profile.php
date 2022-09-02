@@ -1,8 +1,4 @@
 <section class="col-12 p-3 bg-white">
-  <div class="container-header">
-    <h1>Minha conta</h1>
-    <div class="spacing-40"></div>
-  </div>
   <div class="col-12 d-flex">
     <div class="col-4">
       <h3>Informações pessoais</h3>
@@ -24,11 +20,11 @@
           </div>
           <div class="col-md-6">
             <label for="inputPassword" class="form-label">Senha</label>
-            <input type="password" name="password" class="form-control" id="inputPassword">
+            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Senha">
           </div>
           <div class="col-md-6">
             <label for="inputPassword2" class="form-label">Repetir senha</label>
-            <input type="password" name="password2" class="form-control" id="inputPassword2">
+            <input type="password" name="password2" class="form-control" id="inputPassword2" placeholder="Repetir senha">
           </div>
           <div class="col-12">
             <button type="submit" class="btn btn-primary">Salvar</button>

@@ -14,7 +14,7 @@
             <div class="row mb-3">
                 <label for="inputName" class="col-sm-3 col-form-label">Nome<span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                    <input type="text" id="inputName" name="name" class="form-control" value="<?= set_value('name'); ?>" required>
+                    <input type="text" id="inputName" name="name" class="form-control" value="<?= set_value('name'); ?>" required placeholder="Nome">
                     <?php
                     if (isset($validation) && display_errors_forms($validation, 'name') != '') {
                         echo '<div class="alert alert-danger mt-1">';
@@ -27,7 +27,7 @@
             <div class="row mb-3">
                 <label for="inputPhone" class="col-sm-3 col-form-label">Telefone:<span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                    <input type="phone" class="form-control" id="inputPhone" name="phone" value="<?= set_value('phone'); ?>" required>
+                    <input type="phone" class="form-control" id="inputPhone" name="phone" value="<?= set_value('phone'); ?>" required placeholder="Telefone">
                     <?php
                     if (isset($validation) && display_errors_forms($validation, 'phone') != '') {
                         echo '<div class="alert alert-danger mt-1">';
@@ -40,7 +40,7 @@
             <div class="row mb-3">
                 <label for="inputEmail" class="col-sm-3 col-form-label">Email<span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                    <input type="email" value="<?= set_value('email'); ?>" class="form-control" id="inputEmail" name="email" required>
+                    <input type="email" value="<?= set_value('email'); ?>" class="form-control" id="inputEmail" name="email" required placeholder="Email">
                     <?php
                     if (isset($validation) && display_errors_forms($validation, 'email') != '') {
                         echo '<div class="alert alert-danger mt-1">';
@@ -53,7 +53,7 @@
             <div class="row mb-3">
                 <label for="inputPassword" class="col-sm-3 col-form-label">Senha<span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control" id="inputPassword" name="password" required minlength="5" maxlength="12">
+                    <input type="password" class="form-control" id="inputPassword" name="password" required minlength="5" maxlength="12" placeholder="Senha">
                     <?php
                     if (isset($validation) && display_errors_forms($validation, 'password') != '') {
                         echo '<div class="alert alert-danger mt-1">';
@@ -66,7 +66,7 @@
             <div class="row mb-3">
                 <label for="inputPassword4" class="col-sm-3 col-form-label">Repetir senha<span class="text-danger">*</span></label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control" id="inputPassword4" name="password2" required minlength="5" maxlength="12">
+                    <input type="password" class="form-control" id="inputPassword4" name="password2" required minlength="5" maxlength="12" placeholder="Repetir senha">
                     <?php
                     if (isset($validation) && display_errors_forms($validation, 'password2') != '') {
                         echo '<div class="alert alert-danger mt-1">';
