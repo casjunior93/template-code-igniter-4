@@ -35,8 +35,13 @@ class Dash extends BaseController
       throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
     }
 
+    $userModel = new \App\Models\UserModel();
+    $logged_user_id = session()->get('loggedUser');
+    $user_info = $userModel->find($logged_user_id);
+
     $data = [
       'title' => 'Minha conta',
+      'user_info' => $user_info
     ];
 
     return view('templates/page/header', $data)

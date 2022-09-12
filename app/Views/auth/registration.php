@@ -18,7 +18,7 @@
                     <?php
                     if (isset($validation) && display_errors_forms($validation, 'name') != '') {
                         echo '<div class="alert alert-danger mt-1">';
-                        echo display_errors_forms($validation, 'nome');
+                        echo display_errors_forms($validation, 'name');
                         echo '</div>';
                     }
                     ?>

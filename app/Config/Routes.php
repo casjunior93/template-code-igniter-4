@@ -50,6 +50,9 @@ $routes->post('auth/login', 'Auth::login');
 $routes->get('auth/logout', 'Auth::logout');
 $routes->post('auth/reset-password', 'Auth::resetPassword');
 
+//Users
+$routes->post('user/update', 'User::updateProfile');
+
 //Email
 $routes->get("send-mail", "Email::sendMail");
 

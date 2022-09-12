@@ -183,7 +183,7 @@ class Auth extends BaseController
   {
     if (session()->has('loggedUser')) {
       session()->remove('loggedUser');
-      return redirect()->to('auth/sigin/?access=out')->with('fail', 'Você saiu!');
+      return redirect()->to('auth/sigin/?access=out')->with('success', 'Você saiu!');
     }
   }
 
