@@ -26,11 +26,10 @@ class User extends BaseController
           ]
         ],
         'email' => [
-          'rules' => 'required|valid_email|is_unique[users.email]',
+          'rules' => 'required|valid_email',
           'errors' => [
             'required' => 'Campo email não pode ficar vazio',
-            'valid_email' => 'Email inválido',
-            'is_unique' => 'Email já cadastrado'
+            'valid_email' => 'Email inválido'
           ]
         ],
         'phone' => [
@@ -54,15 +53,25 @@ class User extends BaseController
           . view('dash/profile', ['validation' => $this->validator, 'user_info' => $user_info])
           . view('templates/page/footer');
       } else {
+
         $name = $this->request->getPost('name');
         $email = $this->request->getPost('email');
         $phone = $this->request->getPost('phone');
 
-        $values = [
-          'name' => $name,
-          'email' => $email,
-          'phone_number' => $phone
-        ];
+        $userData = $userModel->getWhere(['email' => $email, 'id' => $logged_user_id], 1);
+
+        if ($userData->resultID->num_rows == 0) {
+          $values = [
+            'name' => $name,
+            'email' => $email,
+            'phone_number' => $phone
+          ];
+        } else {
+          $values = [
+            'name' => $name,
+            'phone_number' => $phone
+          ];
+        }
 
         $query = $userModel->update($logged_user_id, $values);
 
