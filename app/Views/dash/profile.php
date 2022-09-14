@@ -61,14 +61,28 @@
         </div>
         <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
           <div class="profile-form p-2">
-            <form class="row g-3">
+            <form class="row g-3" action="<?= base_url('user/update-password'); ?>" method="POST">
               <div class="col-md-6">
-                <label for="inputPassword" class="form-label">Senha</label>
-                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Senha">
+                <label for="inputPassword" class="form-label">Nova senha</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Nova senha">
+                <?php
+                if (isset($validation) && display_errors_forms($validation, 'password') != '') {
+                  echo '<div class="alert alert-danger mt-1">';
+                  echo display_errors_forms($validation, 'password');
+                  echo '</div>';
+                }
+                ?>
               </div>
               <div class="col-md-6">
                 <label for="inputPassword2" class="form-label">Repetir senha</label>
-                <input type="password" name="password2" class="form-control" id="inputPassword2" placeholder="Repetir senha">
+                <input type="password" name="password2" class="form-control" id="password2" placeholder="Repetir senha">
+                <?php
+                if (isset($validation) && display_errors_forms($validation, 'password2') != '') {
+                  echo '<div class="alert alert-danger mt-1">';
+                  echo display_errors_forms($validation, 'password2');
+                  echo '</div>';
+                }
+                ?>
               </div>
               <div class="col-12">
                 <button type="submit" class="btn btn-primary">Salvar</button>

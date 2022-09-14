@@ -50,9 +50,6 @@ $routes->post('auth/login', 'Auth::login');
 $routes->get('auth/logout', 'Auth::logout');
 $routes->post('auth/reset-password', 'Auth::resetPassword');
 
-//Users
-$routes->post('user/update', 'User::updateProfile');
-
 //Email
 $routes->get("send-mail", "Email::sendMail");
 
@@ -63,6 +60,10 @@ $routes->group('', ['filter' => 'AuthCheck'], function ($routes) {
     $routes->get('dashboard', 'Dash::index');
     $routes->get('dashboard/profile', 'Dash::profile');
     $routes->get('dashboard/payment', 'Dash::payment');
+
+    //Users
+    $routes->post('user/update', 'User::updateProfile');
+    $routes->post('user/update-password', 'User::updatePassword');
 });
 /*
  * --------------------------------------------------------------------
