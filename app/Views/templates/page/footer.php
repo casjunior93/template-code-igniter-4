@@ -4,7 +4,7 @@
     <li class="nav-item"><a href="<?= base_url('features'); ?>" class="nav-link px-2 text-white">Recursos</a></li>
     <li class="nav-item"><a href="<?= base_url('pricing'); ?>" class="nav-link px-2 text-white">Preços</a></li>
     <li class="nav-item"><a href="<?= base_url('faqs'); ?>" class="nav-link px-2 text-white">Perguntas frequentes</a></li>
-    <li class="nav-item"><a href="<?= base_url('about'); ?>" class="nav-link px-2 text-white">Sobre o Recommenda</a></li>
+    <li class="nav-item"><a href="<?= base_url('about'); ?>" class="nav-link px-2 text-white">Sobre o App</a></li>
   </ul>
   <p class="text-center text-white">Saturn Software ME &copy; 2022</p>
 </footer>
