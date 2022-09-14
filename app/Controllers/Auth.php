@@ -14,6 +14,10 @@ class Auth extends BaseController
   public function sigin($page = 'auth/sigin')
   {
 
+    if (session()->has('loggedUser')) {
+      return redirect()->to('dashboard');
+    }
+
     if (!is_file(APPPATH . 'Views/' . $page . '.php')) {
       // Whoops, we don't have a page for that!
       throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
@@ -29,6 +33,10 @@ class Auth extends BaseController
 
   public function registration($page = 'auth/registration')
   {
+
+    if (session()->has('loggedUser')) {
+      return redirect()->to('dashboard');
+    }
 
     if (!is_file(APPPATH . 'Views/' . $page . '.php')) {
       // Whoops, we don't have a page for that!

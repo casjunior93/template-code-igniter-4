@@ -15,6 +15,13 @@ class Home extends BaseController
             'title' => 'Home Page'
         ];
 
+        if (session()->has('loggedUser')) {
+            return view('templates/page/header', $data)
+                . view('templates/dash/header', $data)
+                . view($page)
+                . view('templates/page/footer');
+        }
+
         return view('templates/page/header', $data)
             . view('templates/external/header', $data)
             . view($page)
@@ -31,6 +38,14 @@ class Home extends BaseController
         $data = [
             'title' => 'Perguntas frequentes'
         ];
+
+        if (session()->has('loggedUser')) {
+            return view('templates/page/header', $data)
+                . view('templates/dash/header', $data)
+                . view('templates/external/secondary-header', $data)
+                . view($page)
+                . view('templates/page/footer');
+        }
 
         return view('templates/page/header', $data)
             . view('templates/external/header', $data)
@@ -50,6 +65,14 @@ class Home extends BaseController
             'title' => 'Preços'
         ];
 
+        if (session()->has('loggedUser')) {
+            return view('templates/page/header', $data)
+                . view('templates/dash/header', $data)
+                . view('templates/external/secondary-header', $data)
+                . view($page)
+                . view('templates/page/footer');
+        }
+
         return view('templates/page/header', $data)
             . view('templates/external/header', $data)
             . view('templates/external/secondary-header', $data)
@@ -68,6 +91,13 @@ class Home extends BaseController
             'title' => 'Recursos'
         ];
 
+        if (session()->has('loggedUser')) {
+            return view('templates/page/header', $data)
+                . view('templates/dash/header', $data)
+                . view('templates/external/secondary-header', $data)
+                . view($page)
+                . view('templates/page/footer');
+        }
         return view('templates/page/header', $data)
             . view('templates/external/header', $data)
             . view('templates/external/secondary-header', $data)
@@ -85,6 +115,14 @@ class Home extends BaseController
         $data = [
             'title' => 'Sobre'
         ];
+
+        if (session()->has('loggedUser')) {
+            return view('templates/page/header', $data)
+                . view('templates/dash/header', $data)
+                . view('templates/external/secondary-header', $data)
+                . view($page)
+                . view('templates/page/footer');
+        }
 
         return view('templates/page/header', $data)
             . view('templates/external/header', $data)
