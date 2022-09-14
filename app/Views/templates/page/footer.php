@@ -1,10 +1,10 @@
 <footer class="py-3 mt-4 px-2 bg-dark">
   <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Home</a></li>
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Features</a></li>
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-    <li class="nav-item"><a href="<?= base_url('faqs'); ?>" class="nav-link px-2 text-white">FAQs</a></li>
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-white">About</a></li>
+    <li class="nav-item"><a href="<?= base_url(); ?>" class="nav-link px-2 text-white">Home</a></li>
+    <li class="nav-item"><a href="<?= base_url('features'); ?>" class="nav-link px-2 text-white">Recursos</a></li>
+    <li class="nav-item"><a href="<?= base_url('pricing'); ?>" class="nav-link px-2 text-white">Preços</a></li>
+    <li class="nav-item"><a href="<?= base_url('faqs'); ?>" class="nav-link px-2 text-white">Perguntas frequentes</a></li>
+    <li class="nav-item"><a href="<?= base_url('about'); ?>" class="nav-link px-2 text-white">Sobre o Recommenda</a></li>
   </ul>
   <p class="text-center text-white">Saturn Software ME &copy; 2022</p>
 </footer>

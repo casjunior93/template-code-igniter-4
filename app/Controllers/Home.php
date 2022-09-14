@@ -56,4 +56,40 @@ class Home extends BaseController
             . view($page)
             . view('templates/page/footer');
     }
+
+    public function features($page = 'pages/features')
+    {
+        if (!is_file(APPPATH . 'Views/' . $page . '.php')) {
+            // Whoops, we don't have a page for that!
+            throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
+        }
+
+        $data = [
+            'title' => 'Recursos'
+        ];
+
+        return view('templates/page/header', $data)
+            . view('templates/external/header', $data)
+            . view('templates/external/secondary-header', $data)
+            . view($page)
+            . view('templates/page/footer');
+    }
+
+    public function about($page = 'pages/about')
+    {
+        if (!is_file(APPPATH . 'Views/' . $page . '.php')) {
+            // Whoops, we don't have a page for that!
+            throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
+        }
+
+        $data = [
+            'title' => 'Sobre'
+        ];
+
+        return view('templates/page/header', $data)
+            . view('templates/external/header', $data)
+            . view('templates/external/secondary-header', $data)
+            . view($page)
+            . view('templates/page/footer');
+    }
 }

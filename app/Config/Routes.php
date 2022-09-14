@@ -39,6 +39,8 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/faqs', 'Home::faqs');
 $routes->get('/pricing', 'Home::pricing');
+$routes->get('/features', 'Home::features');
+$routes->get('/about', 'Home::about');
 
 //Authentication
 
