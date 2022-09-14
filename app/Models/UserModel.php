@@ -22,7 +22,7 @@ class UserModel extends Model
   public function resetPassword($id, $hash)
   {
     $db = db_connect();
-    $sql = "UPDATE users SET password = '$hash' WHERE id_user = $id";
+    $sql = "UPDATE users SET password = '$hash' WHERE id = $id";
     $resultado = $db->query($sql);
     return $resultado;
   }

@@ -172,7 +172,7 @@ class Auth extends BaseController
         session()->setFlashdata('fail', 'Senha incorreta');
         return redirect()->to('auth/sigin')->withInput();
       } else {
-        $user_id = $usuario_info['id_user'];
+        $user_id = $usuario_info['id'];
         session()->set('loggedUser', $user_id);
         return redirect()->to('/dashboard');
       }
@@ -215,7 +215,7 @@ class Auth extends BaseController
 
       $userData = $userModel->getWhere(['email' => $email], 1);
 
-      $query = $userModel->resetPassword($userData->getResult()[0]->id_user, Hash::make($new_password));
+      $query = $userModel->resetPassword($userData->getResult()[0]->id, Hash::make($new_password));
 
       if (!$query) {
         return redirect()->back()->with('fail', 'Erro ao gerar nova senha');
